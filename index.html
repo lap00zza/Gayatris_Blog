@@ -1,0 +1,96 @@
+<html lang="en">
+  <!-- That is not visible to the viewers -->
+  <head>
+    <title>Gayatri's Blog</title>
+    <style>
+      h1 {
+        color: #d08770;
+      }
+      .container {
+        display: flex;
+        /* flex: auto; */
+        align-items: center;
+        flex-direction: column;
+        border-color: rgb(148, 147, 147);
+        border-style: dotted;
+        border-width: 2px;
+        background-color: #2e3440;
+      }
+      #text-holder {
+        color: #ebcb8b;
+        font-family: monospace;
+        padding-top: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+      }
+      #color-change-button {
+        border: none;
+        background-color: #4c566a;
+        color: #a3be8c;
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+      }
+      .footer {
+        margin-top: 20px;
+        font-style: italic;
+        font-size: 12px;
+        color: #88c0d0;
+      }
+    </style>
+  </head>
+
+  <!-- Visible to users -->
+  <body class="container">
+    <div>
+      <h1>Color Changer</h1>
+      <div id="text-holder">hi world, this is a test</div>
+      <div><button id="color-change-button">Change Color</button></div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">Made by Gayatri</div>
+
+    <!-- script tag loads whenever it shows up -->
+    <script>
+      var color1 = "#A3BE8C";
+      var color2 = "#B48EAD";
+      var color3 = "#BF616A";
+
+      var textHolder = document.getElementById("text-holder");
+      var button = document.getElementById("color-change-button");
+
+      function onButtonClick() {
+        // it gives me a random number between 0 and 1
+        // ex: 0.00098214324234, 0.12231232312444
+        //
+        // +1 -> 1 and 3 (3 - 1 = 2)
+        // 0.1x2=0.2  0.2x2=0.4  0.3x2=0.6 ... 1x2=2
+        // > 1 + 0.2 = 1.2 ................... 1+2=3
+        //
+        // 2.454555 => 2
+        // 2.76 => 2
+        // Math.ceil (ceiling)
+        // Math.floor (floor)
+        var randomNumber =
+          Math.floor(
+            // generate a random number and multiply it with range
+            Math.random() * (4 - 1) // Math.floor(2.9999999) => 2
+          ) + 1;
+
+        // textHolder.style.color = "green";
+        // if is called a conditional statement
+        if (randomNumber == 1) {
+          textHolder.style.color = color1;
+        } else if (randomNumber == 2) {
+          textHolder.style.color = color2;
+        } else {
+          textHolder.style.color = color3;
+        }
+      }
+      // We are adding a function to listen to the "click" event.
+      // This function will run anytime we click the "button";
+      button.addEventListener("click", onButtonClick);
+    </script>
+  </body>
+</html>
